@@ -8,5 +8,20 @@ namespace Elena.Infrastructure.Data
         public ElenaContext(DbContextOptions<ElenaContext> options) : base(options) { }
 
         public DbSet<Lutador> Lutadores { get; set; } = default!;
+
+        public DbSet<Usuario> Usuarios { get; set; } = default!;
+
+        public DbSet<Pessoa> Pessoas { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Usuario>()
+                .HasOne(u => u.Pessoa)
+                .WithOne()  // Com o relacionamento one-to-one
+                .HasForeignKey<Usuario>(u => u.PessoaId);
+        }
     }
+
 }
