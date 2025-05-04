@@ -32,7 +32,7 @@ namespace Elena.Api.Controllers
             }
 
             var usuario = await _context.Usuarios
-                .Include(u => u.Pessoa)  // Certifique-se de carregar a Pessoa
+                .Include(u => u.Pessoa)
                 .FirstOrDefaultAsync(u => u.Username == login.Username);
 
             if (usuario == null)
@@ -40,13 +40,10 @@ namespace Elena.Api.Controllers
                 return Unauthorized("Credenciais inválidas");
             }
 
-            // Aqui você pode validar a senha com uma comparação segura
             if (usuario.Password != login.Password)
             {
                 return Unauthorized("Senha incorreta");
             }
-
-            // Gerar o token JWT
             var token = _tokenService.GenerateToken(usuario.Username, usuario.Pessoa.Email, usuario.Tipo.ToString());
 
             return Ok(new { Token = token });

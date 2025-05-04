@@ -13,12 +13,10 @@ namespace Elena.Domain.Entities
         public Guid Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public TipoUsuario Tipo { get; set; } // Tipo de usuário, como Admin, etc.
+        public TipoUsuario Tipo { get; set; }
 
-        // Chave estrangeira para a tabela Pessoa
         public Guid PessoaId { get; set; }
 
-        // Relacionamento com a tabela Pessoa
         public Pessoa Pessoa { get; set; }
     }
 

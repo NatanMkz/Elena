@@ -130,7 +130,6 @@ public class LutadoresController : ControllerBase
         if (lutador == null)
             return NotFound("Lutador não encontrado.");
 
-        // Atualiza os campos
         lutador.Nome = dto.Nome;
         lutador.Nacionalidade = dto.Nacionalidade;
         lutador.EstiloDeLuta = dto.EstiloDeLuta;
@@ -178,7 +177,7 @@ public class LutadoresController : ControllerBase
 
         var lutadores = await _context.Lutadores
             .AsNoTracking()
-            .ToListAsync(); // <- traz tudo pra memória
+            .ToListAsync();
 
         var resultado = lutadores
             .Select(l => new

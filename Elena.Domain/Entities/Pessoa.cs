@@ -8,7 +8,7 @@ namespace Elena.Domain.Entities
 {
     public class Pessoa
     {
-        public Guid Id { get; set; } // A Pessoa agora tem uma chave primária
+        public Guid Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Endereco { get; set; }

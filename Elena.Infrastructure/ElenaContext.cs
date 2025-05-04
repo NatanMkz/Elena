@@ -19,7 +19,7 @@ namespace Elena.Infrastructure.Data
 
             modelBuilder.Entity<Usuario>()
                 .HasOne(u => u.Pessoa)
-                .WithOne()  // Com o relacionamento one-to-one
+                .WithOne()
                 .HasForeignKey<Usuario>(u => u.PessoaId);
         }
     }
